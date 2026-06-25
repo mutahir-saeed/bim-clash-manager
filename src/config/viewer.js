@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════
 //  IFC 3D Viewer Configuration
-//  Replaces the old Speckle config with native Three.js settings
+// Native Three.js / xeokit settings
 // ═══════════════════════════════════════════════════════════
 
 // WASM path — where web-ifc.wasm is served from (copied by postinstall)

@@ -116,7 +116,7 @@ export default function Header({
         <div className="relative">
           <button
             onClick={() => setShowHelp(!showHelp)}
-            className="speckle-toolbar-btn"
+            className="toolbar-btn"
             title="How to use"
           >
             <Info className="w-3.5 h-3.5" />
@@ -165,7 +165,7 @@ export default function Header({
         {filteredClashes && filteredClashes.length > 0 && (
           <button
             onClick={() => exportClashesToCsv(filteredClashes)}
-            className="speckle-toolbar-btn"
+            className="toolbar-btn"
           >
             <Download className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">CSV</span>
@@ -176,7 +176,7 @@ export default function Header({
         {filteredClashes && filteredClashes.length > 0 && onExportBcf && (
           <button
             onClick={onExportBcf}
-            className="speckle-toolbar-btn"
+            className="toolbar-btn"
             title="Export BCF for BIM tools"
           >
             <FileDown className="w-3.5 h-3.5" />
@@ -188,7 +188,7 @@ export default function Header({
         {onExportPdf && (
           <button
             onClick={onExportPdf}
-            className="speckle-toolbar-btn"
+            className="toolbar-btn"
             title="Generate PDF Report"
           >
             <FileBarChart className="w-3.5 h-3.5" />

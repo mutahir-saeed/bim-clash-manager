@@ -877,7 +877,7 @@ body {
 }
 
 /* ── Header Toolbar Button ── */
-.speckle-toolbar-btn {
+.toolbar-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -891,7 +891,7 @@ body {
   cursor: pointer;
   transition: all 0.15s;
 }
-.speckle-toolbar-btn:hover {
+.toolbar-btn:hover {
   background: rgba(255,255,255,0.2);
   border-color: rgba(255,255,255,0.3);
 }

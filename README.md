@@ -2,7 +2,7 @@
 
 > Professional Navisworks Clash Detection Management Dashboard
 
-A portfolio-grade BIM coordination tool that parses Navisworks clash detection XML reports and provides an interactive management dashboard with integrated 3D Speckle viewer.
+A portfolio-grade BIM coordination tool that parses Navisworks clash detection XML reports and provides an interactive management dashboard with an integrated 3D xeokit IFC viewer.
 
 ![BIM Clash Manager Screenshot](screenshot-placeholder.png)
 
@@ -15,7 +15,7 @@ A portfolio-grade BIM coordination tool that parses Navisworks clash detection X
 - **Clash Table** — Sortable, paginated table with inline status management
 - **Detail Panel** — Full clash metadata, object properties, assignment & comments
 - **Status Management** — Track clash resolution workflow (Active → Reviewed → Approved → Resolved)
-- **3D Viewer** — Speckle viewer integration for visual clash inspection
+- **3D Viewer** — Local WebAssembly IFC viewer (xeokit-sdk + web-ifc) for visual clash inspection
 - **CSV Export** — Export filtered clash data for reporting
 - **LocalStorage Persistence** — Status overrides survive browser refresh
 - **Responsive Design** — Works on desktop and tablet screens
@@ -27,7 +27,7 @@ A portfolio-grade BIM coordination tool that parses Navisworks clash detection X
 - **Recharts** — Interactive data visualization
 - **fast-xml-parser** — Efficient XML parsing
 - **Lucide React** — Premium icon system
-- **@speckle/viewer** — 3D BIM model viewer
+- **xeokit-sdk & web-ifc** — 3D BIM model viewer and parsing
 - **Vercel** — Deployment target
 
 ## Getting Started
@@ -78,10 +78,8 @@ The app processes Navisworks Manage clash detection reports with this structure:
 
 ## 3D Viewer Setup
 
-To enable Speckle 3D viewer integration:
-
-1. Upload your IFC models to [Speckle](https://speckle.systems)
-2. Update `src/config/speckle.js` with your stream URL
+To enable the 3D viewer integration:
+1. Drag and drop your `.ifc` models into the app (they run locally).
 3. Restart the dev server
 
 ## Deploy to Vercel
@@ -105,13 +103,12 @@ src/
 │   ├── ChartsSection.jsx      # 3 Recharts visualizations
 │   ├── FilterPanel.jsx        # Filter controls sidebar
 │   ├── ClashTable.jsx         # Sortable paginated table
-│   ├── ClashDetailPanel.jsx   # Clash detail slide-over
-│   ├── SpeckleViewer.jsx      # 3D model viewer
-│   └── UploadZone.jsx         # Drag-drop XML upload
-├── config/
-│   └── speckle.js             # Speckle viewer config
+│   ├── IfcViewer.jsx          # 3D model viewer
+│   ├── AnalyticsDashboard.jsx # Dashboard UI
+│   └── ClashDetailPanel.jsx   # Details
 ├── hooks/
-│   └── useClashData.js        # State management
+│   ├── useClashData.js        # Clash logic
+│   └── useIfcScene.js         # Viewer scene logic
 ├── utils/
 │   ├── parseXml.js            # XML parser
 │   ├── filterClashes.js       # Filter engine
