@@ -23,6 +23,7 @@ export default function App() {
     parseDate,
     loading,
     error,
+    isDemo,
     filteredClashes,
     sortedClashes,
     paginatedClashes,
@@ -228,6 +229,7 @@ export default function App() {
               selectedClash={selectedClash}
               filteredClashIds={filteredClashIds}
               onPickedElementChange={setPickedElementId}
+              isDemo={isDemo}
             />
           </div>
         </div>

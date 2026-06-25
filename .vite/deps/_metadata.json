@@ -2,7 +2,43 @@
   "hash": "d4188021",
   "configHash": "6fd81227",
   "lockfileHash": "300db3dd",
-  "browserHash": "9189c373",
-  "optimized": {},
-  "chunks": {}
+  "browserHash": "5b7f5a4d",
+  "optimized": {
+    "@xeokit/xeokit-sdk": {
+      "src": "../../node_modules/@xeokit/xeokit-sdk/dist/xeokit-sdk.es.js",
+      "file": "@xeokit_xeokit-sdk.js",
+      "fileHash": "3d277af8",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.mjs",
+      "file": "lucide-react.js",
+      "fileHash": "0eaaf9f3",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "9182d62e",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "874812f6",
+      "needsInterop": true
+    },
+    "web-ifc": {
+      "src": "../../node_modules/web-ifc/web-ifc-api.js",
+      "file": "web-ifc.js",
+      "fileHash": "698ab8e9",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-EAsCxrDo": {
+      "file": "chunk-EAsCxrDo.js",
+      "isDynamicEntry": false
+    }
+  }
 }

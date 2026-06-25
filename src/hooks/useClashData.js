@@ -39,6 +39,7 @@ export function useClashData() {
   const [parseDate, setParseDate] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isDemo, setIsDemo] = useState(false);
 
   const [overrides, setOverrides] = useState(loadOverrides);
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
@@ -339,6 +340,7 @@ export function useClashData() {
     setLoading(true);
     setError(null);
     try {
+      setIsDemo(false);
       // Use setTimeout to allow UI to update with loading state
       await new Promise((r) => setTimeout(r, 50));
       const result = parseClashXml(xmlString);
@@ -367,6 +369,7 @@ export function useClashData() {
       if (!response.ok) throw new Error("Failed to load demo data");
       const text = await response.text();
       await loadXml(text);
+      setIsDemo(true);
     } catch (err) {
       setError(err.message);
       setLoading(false);
@@ -439,6 +442,7 @@ export function useClashData() {
     parseDate,
     loading,
     error,
+    isDemo,
 
     // Filtered / sorted / paginated
     filteredClashes,

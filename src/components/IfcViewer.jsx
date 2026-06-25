@@ -33,7 +33,7 @@ const DISCIPLINE_CONFIG = {
   MEP: { icon: Wrench, color: "#10b981", label: "MEP" },
 };
 
-export default function IfcViewer({ selectedClash, filteredClashIds, onPickedElementChange }) {
+export default function IfcViewer({ selectedClash, filteredClashIds, onPickedElementChange, isDemo }) {
   const containerRef = useRef(null); // canvas
   const wrapperRef = useRef(null); // outer div
   const fileInputRef = useRef(null);
@@ -105,6 +105,33 @@ export default function IfcViewer({ selectedClash, filteredClashIds, onPickedEle
   useEffect(() => {
     init();
   }, [init]);
+
+  // Auto-load demo models
+  useEffect(() => {
+    if (isDemo && isInitialized && loadedModels.length === 0 && !isLoading) {
+      const loadDemoIFCs = async () => {
+        try {
+          const fetchAsFile = async (url, filename) => {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`Failed to fetch ${filename}`);
+            const blob = await res.blob();
+            return new File([blob], filename, { type: "application/octet-stream" });
+          };
+
+          const files = await Promise.all([
+            fetchAsFile("/01_BIMcollab_Example_ARC.ifc", "01_BIMcollab_Example_ARC.ifc"),
+            fetchAsFile("/02_BIMcollab_Example_STR_optimized.ifc", "02_BIMcollab_Example_STR_optimized.ifc"),
+            fetchAsFile("/03_BIMcollab_Example_MEP_optimized.ifc", "03_BIMcollab_Example_MEP_optimized.ifc"),
+          ]);
+          
+          loadMultipleIfc(files);
+        } catch (err) {
+          console.error("Failed to load demo IFCs:", err);
+        }
+      };
+      loadDemoIFCs();
+    }
+  }, [isDemo, isInitialized, loadedModels.length, isLoading, loadMultipleIfc]);
 
   // Handle filtering
   useEffect(() => {
